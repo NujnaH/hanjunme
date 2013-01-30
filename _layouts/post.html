@@ -1,0 +1,15 @@
+---
+layout: default 
+---
+
+<div class="container-narrow" style="margin-top: 100px"> 
+        <div class="row-fluid">
+		<div class="span12">
+		        <h2>{{ page.title }}</h2>
+		        <p>{{ page.date | date: "%B %d, %Y" }}<br>{{ content }}</p>
+		        <p>Category: <a href="/{{ page.categories | first}}">{{ page.categories | category_links }}</a></p>
+		
+		        <div id="livefyre-comments"></div>
+		</div>
+        </div>
+</div>

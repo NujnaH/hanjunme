@@ -1,0 +1,38 @@
+---
+layout: default
+title: Fitness 
+---				
+
+<div id="myCarousel" class="carousel slide">
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="/images/fitness.jpg">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Fitness</h1>
+					<p class="lead">Experiments and experiences on health and fitness.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-narrow">
+	<div class="row-fluid">
+		<div class="span9">
+			{% for post in site.categories.fitness limit: 5 %}
+				<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+				<p>Posted {{ post.date | date: "%B %d, %Y" }}</p>
+				<p>{{ post.excerpt }}<br><a href="{{ post.url }}">Read More</a></h2>
+				<hr>
+			{% endfor %}
+		</div>
+		<div class="span3">
+			<h2>Categories</h2>
+			<p><ul>
+			{% for cat in site.categories %}
+			    <li><a href="/{{cat | first }}">{{ cat | first }}</a></li>
+			{% endfor %}
+			</ul></p>
+		</div>
+	</div>
+</div>

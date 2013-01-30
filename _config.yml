@@ -1,0 +1,9 @@
+gallery:
+  title_prefix: "Photos: "
+  dir: photos
+  galleries:
+    test:
+      best_image: bronze.jpg
+  thumbnail_size:
+    x: 250 
+    y: 181 
