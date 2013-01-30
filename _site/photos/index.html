@@ -1,0 +1,246 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Photos</title>
+		<link href="/css/bootstrap.css" rel="stylesheet" media="screen">
+		<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="/css/bootstrap-modal.css" rel="stylesheet">
+		<script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+		<link href="/css/hanjunme.css" rel="stylesheet">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37808539-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<body>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap-modalmanager.js"></script>
+		<script src="/js/bootstrap-modal.js"></script>
+		<script src="/js/jquery.mobile.custom.min.js"></script>
+		
+				<div class="navbar-wrapper">
+			<!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+			<div class="container">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-inner">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</a>
+						<a class="brand" href="/">Hanjun Kim</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="/photos/">Photos</a></li>
+								<li><a href="/about/">About</a></li>
+								<li><a href="/resume/">Resume</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>	
+		<script src="/js/jquery.isotope.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script type="text/javascript" src="/js/jquery.mousewheel-3.0.6.pack.js"></script>
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+<script type="text/javascript" src="/js/jquery.ba-resize.min.js"></script>
+
+<div class="container" style="padding-top:20px">
+<div id="isotopeContainer" class="content" style="padding-top:100px">
+
+<div id="mainBox" class="box cat cat0 cat1 cat2 cat3" onclick='categorize("*")'>
+	<a class="thumbnail imagebox" style="cursor: pointer"><img src="/images/tile_thumb.jpg">
+	<h3>All Categories</h3></a>
+</div>	
+
+<div class="box cat cat0 cat1 cat2 cat3" onclick='categorize("cat1")'> 
+    <a class="thumbnail imagebox" style="cursor: pointer"><img src="blog_pictures/thumbs/rock_climbing_shoes.jpg">
+	<h3>Blog Pictures</h3></a>
+</div>
+
+<div class="box cat cat0 cat1 cat2 cat3" onclick='categorize("cat2")'> 
+    <a class="thumbnail imagebox" style="cursor: pointer"><img src="cosmic_gate/thumbs/tJ_and_i.jpg">
+	<h3>Cosmic Gate</h3></a>
+</div>
+
+<div class="box cat cat0 cat1 cat2 cat3" onclick='categorize("cat3")'> 
+    <a class="thumbnail imagebox" style="cursor: pointer"><img src="blue_mountain/thumbs/the_view.jpg">
+	<h3>Blue Mountain</h3></a>
+</div>
+
+
+
+
+
+
+    <div class="box cat1">
+        <a href="blog_pictures/blue_mountain.jpg" class="fancybox thumbnail imagebox" rel="gallery1" title="Title: Blue Mountain<br>Album: Blog Pictures"><img src="blog_pictures/thumbs/blue_mountain.jpg" /></a>
+    </div>
+
+    <div class="box cat1">
+        <a href="blog_pictures/books_banner.jpg" class="fancybox thumbnail imagebox" rel="gallery1" title="Title: Books Banner<br>Album: Blog Pictures"><img src="blog_pictures/thumbs/books_banner.jpg" /></a>
+    </div>
+
+    <div class="box cat1">
+        <a href="blog_pictures/gadgets_banner_photo.jpg" class="fancybox thumbnail imagebox" rel="gallery1" title="Title: Gadgets Banner Photo<br>Album: Blog Pictures"><img src="blog_pictures/thumbs/gadgets_banner_photo.jpg" /></a>
+    </div>
+
+    <div class="box cat1">
+        <a href="blog_pictures/rock_climbing_shoes.jpg" class="fancybox thumbnail imagebox" rel="gallery1" title="Title: Rock Climbing Shoes<br>Album: Blog Pictures"><img src="blog_pictures/thumbs/rock_climbing_shoes.jpg" /></a>
+    </div>
+
+
+
+
+
+
+    <div class="box cat2">
+        <a href="cosmic_gate/charles_and_i.jpg" class="fancybox thumbnail imagebox" rel="gallery2" title="Title: Charles And I<br>Album: Cosmic Gate"><img src="cosmic_gate/thumbs/charles_and_i.jpg" /></a>
+    </div>
+
+    <div class="box cat2">
+        <a href="cosmic_gate/cosmic_gate_on_stage.jpg" class="fancybox thumbnail imagebox" rel="gallery2" title="Title: Cosmic Gate On Stage<br>Album: Cosmic Gate"><img src="cosmic_gate/thumbs/cosmic_gate_on_stage.jpg" /></a>
+    </div>
+
+    <div class="box cat2">
+        <a href="cosmic_gate/cosmic_gate_on_stage_1.jpg" class="fancybox thumbnail imagebox" rel="gallery2" title="Title: Cosmic Gate On Stage 1<br>Album: Cosmic Gate"><img src="cosmic_gate/thumbs/cosmic_gate_on_stage_1.jpg" /></a>
+    </div>
+
+    <div class="box cat2">
+        <a href="cosmic_gate/photobombed.jpg" class="fancybox thumbnail imagebox" rel="gallery2" title="Title: Photobombed<br>Album: Cosmic Gate"><img src="cosmic_gate/thumbs/photobombed.jpg" /></a>
+    </div>
+
+    <div class="box cat2">
+        <a href="cosmic_gate/tJ_and_charles.jpg" class="fancybox thumbnail imagebox" rel="gallery2" title="Title: Tj And Charles<br>Album: Cosmic Gate"><img src="cosmic_gate/thumbs/tJ_and_charles.jpg" /></a>
+    </div>
+
+    <div class="box cat2">
+        <a href="cosmic_gate/tJ_and_i.jpg" class="fancybox thumbnail imagebox" rel="gallery2" title="Title: Tj And I<br>Album: Cosmic Gate"><img src="cosmic_gate/thumbs/tJ_and_i.jpg" /></a>
+    </div>
+
+
+
+
+
+
+    <div class="box cat3">
+        <a href="blue_mountain/dinner.jpg" class="fancybox thumbnail imagebox" rel="gallery3" title="Title: Dinner<br>Album: Blue Mountain"><img src="blue_mountain/thumbs/dinner.jpg" /></a>
+    </div>
+
+    <div class="box cat3">
+        <a href="blue_mountain/friend_just_fell.jpg" class="fancybox thumbnail imagebox" rel="gallery3" title="Title: Friend Just Fell<br>Album: Blue Mountain"><img src="blue_mountain/thumbs/friend_just_fell.jpg" /></a>
+    </div>
+
+    <div class="box cat3">
+        <a href="blue_mountain/group_shot.jpg" class="fancybox thumbnail imagebox" rel="gallery3" title="Title: Group Shot<br>Album: Blue Mountain"><img src="blue_mountain/thumbs/group_shot.jpg" /></a>
+    </div>
+
+    <div class="box cat3">
+        <a href="blue_mountain/group_shot_on_lift.jpg" class="fancybox thumbnail imagebox" rel="gallery3" title="Title: Group Shot On Lift<br>Album: Blue Mountain"><img src="blue_mountain/thumbs/group_shot_on_lift.jpg" /></a>
+    </div>
+
+    <div class="box cat3">
+        <a href="blue_mountain/the_view.jpg" class="fancybox thumbnail imagebox" rel="gallery3" title="Title: The View<br>Album: Blue Mountain"><img src="blue_mountain/thumbs/the_view.jpg" /></a>
+    </div>
+
+
+
+
+</div>
+</div>
+
+<script>
+var $container = $('#isotopeContainer');
+$(document).ready(function(){
+    $container.isotope({
+        filter: '*',
+        animationOptions: {
+            duration: 750,
+            easing: 'linear',
+            queue: false,
+        }
+    });
+	$(".fancybox").fancybox({
+    helpers : {
+		title : {
+			type : 'over'
+		},
+        overlay : {
+            css : {
+                'background' : 'rgba(58, 42, 45, 0.95)'
+            }
+        }
+    },
+	beforeShow: function () {
+            /* Disable right click */
+            $.fancybox.wrap.bind("contextmenu", function (e) {
+                    return false; 
+            });
+    }
+    });
+});
+
+$('#mainBox').resize(function(e) {
+	$container.isotope('reLayout', null);
+});
+
+$container.imagesLoaded(function(){
+  var selector = '*';
+  $container.isotope({
+    filter: selector, 
+    animationOptions: {
+     duration: 750,
+     easing: 'linear',
+     queue: false,
+ 
+    }
+  });
+});
+
+function categorize(selector1){
+  var selector = "." + selector1;
+  if (selector1 == "*") {
+     selector = selector1;
+  }
+  $container.isotope({
+    filter: selector,
+    animationOptions: {
+     duration: 750,
+     easing: 'linear',
+     queue: false,
+
+    }
+  });
+  return false;
+}
+</script>
+
+
+        <!-- FOOTER -->
+        <div class="container-narrow">
+        	<div class="row-fluid">
+				<p>Copyright &copy; 2013 NujnaH &middot; All rights reserved.</p>
+            </div>
+        </div>
+	</body>
+</html>
