@@ -54,22 +54,6 @@ title: Hanjun Kim
 <div class="container">
 <div id="isotopeContainer" class="content">
 
-<!-- Categories -->
-<div id="mainBox" class="box category" onclick='categorize("*")'>
-        <a class="thumbnail textbox" style="cursor: pointer">
-		<img src="/images/software.jpg">
-        	<h3>All Posts</h3>
-	</a>
-</div>
-{% for category in site.categories %}
-	<div class="box category" onclick='categorize("{{ category | first }}")'>
-		<a class="thumbnail textbox" style="cursor: pointer">
-		<img src="/images/{{ category | first }}.jpg">
-       		<h3>{{ category | first | capitalize }}</h3>
-		</a>
-	</div>
-{% endfor %}
-
 <!-- Articles -->
 {% for post in site.posts %}
     <div class="box {{ post.categories }} article"> 
