@@ -243,6 +243,11 @@ body {
 	height: auto;
 }
 
+.box .textbox h2, h3, p {
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
 /* RESPONSIVE CSS */
 @media (min-width: 1200px) {
 /* Isotope Styles */

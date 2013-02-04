@@ -41,7 +41,18 @@
 						<a class="brand" href="/">Hanjun Kim</a>
 						<div class="nav-collapse collapse">
 							<ul class="nav">
-								<li><a href="/photos/">Photos</a></li>
+								<li class="dropdown">
+									<a href="/photos/" class="dropdown-toggle" data-toggle="dropdown">
+										Photos
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="/photos/">All Photos</a></li>
+										<li class="divider"></li>
+										<li><a href="/photos/blog_pictures">Blog Pictures</a></li>
+										<li><a href="/photos/cosmic_gate">Cosmic Gate</a></li>
+										<li><a href="/photos/blue_mountain">Blue Mountain</a></li>
+									</ul>
+								</li>
 								<li><a href="/about/">About</a></li>
 								<li><a href="/resume/">Resume</a></li>
 							</ul>
@@ -50,7 +61,101 @@
 				</div>
 			</div>			
 		</div>	
-		
+		<script src="/js/jquery.isotope.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script type="text/javascript" src="/js/jquery.mousewheel-3.0.6.pack.js"></script>
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+<script type="text/javascript" src="/js/jquery.ba-resize.min.js"></script>
+
+<div class="container" style="padding-top:20px">
+<div id="isotopeContainer" class="content" style="padding-top:100px">
+
+
+<div class="box cat">
+       	<a href="charles_and_i.jpg" rel="photo" class="fancybox thumbnail imagebox" title="Charles And I"><img src="thumbs/charles_and_i.jpg" /></a>
+</div>
+
+<div class="box cat">
+       	<a href="cosmic_gate_on_stage.jpg" rel="photo" class="fancybox thumbnail imagebox" title="Cosmic Gate On Stage"><img src="thumbs/cosmic_gate_on_stage.jpg" /></a>
+</div>
+
+<div class="box cat">
+       	<a href="cosmic_gate_on_stage_1.jpg" rel="photo" class="fancybox thumbnail imagebox" title="Cosmic Gate On Stage 1"><img src="thumbs/cosmic_gate_on_stage_1.jpg" /></a>
+</div>
+
+<div class="box cat">
+       	<a href="photobombed.jpg" rel="photo" class="fancybox thumbnail imagebox" title="Photobombed"><img src="thumbs/photobombed.jpg" /></a>
+</div>
+
+<div class="box cat">
+       	<a href="tJ_and_charles.jpg" rel="photo" class="fancybox thumbnail imagebox" title="Tj And Charles"><img src="thumbs/tJ_and_charles.jpg" /></a>
+</div>
+
+<div class="box cat">
+       	<a href="tJ_and_i.jpg" rel="photo" class="fancybox thumbnail imagebox" title="Tj And I"><img src="thumbs/tJ_and_i.jpg" /></a>
+</div>
+
+
+</div>
+</div>
+
+<script>
+var $container = $('#isotopeContainer');
+$(document).ready(function(){
+    $container.isotope({
+        filter: '*',
+        animationOptions: {
+            duration: 750,
+            easing: 'linear',
+            queue: false,
+        }
+    });
+        $(".fancybox").fancybox({
+    helpers : {
+                title : {
+                        type : 'over'
+                },
+        overlay : {
+            css : {
+                'background' : 'rgba(58, 42, 45, 0.95)'
+            }
+        }
+    },
+        beforeShow: function () {
+            /* Disable right click */
+            $.fancybox.wrap.bind("contextmenu", function (e) {
+                    return false;
+            });
+    }
+    });
+});
+
+$('#mainBox').resize(function(e) {
+        $container.isotope('reLayout', null);
+});
+
+$container.imagesLoaded(function(){
+  var selector = '*';
+  $container.isotope({
+    filter: selector,
+    animationOptions: {
+     duration: 750,
+     easing: 'linear',
+     queue: false,
+
+    }
+  });
+});
+</script>
 
 
         <!-- FOOTER -->

@@ -1,7 +1,7 @@
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>First Post<br><br></title>
+		<title>First Post</title>
 		<link href="/css/bootstrap.css" rel="stylesheet" media="screen">
 		<link href="/css/bootstrap-responsive.css" rel="stylesheet">
 		<link href="/css/bootstrap-modal.css" rel="stylesheet">
@@ -41,7 +41,18 @@
 						<a class="brand" href="/">Hanjun Kim</a>
 						<div class="nav-collapse collapse">
 							<ul class="nav">
-								<li><a href="/photos/">Photos</a></li>
+								<li class="dropdown">
+									<a href="/photos/" class="dropdown-toggle" data-toggle="dropdown">
+										Photos
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="/photos/">All Photos</a></li>
+										<li class="divider"></li>
+										<li><a href="/photos/blog_pictures">Blog Pictures</a></li>
+										<li><a href="/photos/cosmic_gate">Cosmic Gate</a></li>
+										<li><a href="/photos/blue_mountain">Blue Mountain</a></li>
+									</ul>
+								</li>
 								<li><a href="/about/">About</a></li>
 								<li><a href="/resume/">Resume</a></li>
 							</ul>
@@ -53,7 +64,7 @@
 		<div class="container-narrow" style="margin-top: 100px"> 
         <div class="row-fluid">
 		<div class="span12">
-		        <h2>First Post<br><br></h2>
+		        <h2>First Post</h2>
 		        <p>January 15, 2013<br>This is the second week of building my website, and I've decided that what I want is for my main page to become a blog website. So that's what this will become in the end. A banner at the top will have headlines, kind of like what <a href="http://www.theverge.com">The Verge</a> does with their website, and I'm thinking of using a commenting system powered by either disqus or livefyre. Let's see how this turns out
 
 <script type="text/javascript">var lf_config = [{"collectionMeta":"eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJ0aXRsZSI6IkZpcnN0IFBvc3QiLCJ1cmwiOiJodHRwOlwvXC9oYW5qdW4ubWVcL3NvZnR3YXJlXC8yMDEzXC8wMVwvMTVcL2ZpcnN0X3Bvc3QuaHRtbCIsInRhZ3MiOiJzb2Z0d2FyZSIsImNoZWNrc3VtIjoiNDZkMjg2ZWY0NzU5ZjQ3Y2RjYWJhY2VkYTQ2NzVhZDciLCJhcnRpY2xlSWQiOiIwIn0.MYCGMRMASle58LXd3ke_CWvY_R-wgQtFuiyACe5rwfo","checksum":"46d286ef4759f47cdcabaceda4675ad7","siteId":"321245","articleId":"0","el":"livefyre-comments"}];var conv = fyre.conv.load({"network": ""}, lf_config);</script>

@@ -41,7 +41,18 @@
 						<a class="brand" href="/">Hanjun Kim</a>
 						<div class="nav-collapse collapse">
 							<ul class="nav">
-								<li><a href="/photos/">Photos</a></li>
+								<li class="dropdown">
+									<a href="/photos/" class="dropdown-toggle" data-toggle="dropdown">
+										Photos
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="/photos/">All Photos</a></li>
+										<li class="divider"></li>
+										<li><a href="/photos/blog_pictures">Blog Pictures</a></li>
+										<li><a href="/photos/cosmic_gate">Cosmic Gate</a></li>
+										<li><a href="/photos/blue_mountain">Blue Mountain</a></li>
+									</ul>
+								</li>
 								<li><a href="/about/">About</a></li>
 								<li><a href="/resume/">Resume</a></li>
 							</ul>
@@ -65,8 +76,12 @@
 <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 <script type="text/javascript" src="/js/jquery.ba-resize.min.js"></script>
 
-<div class="container" style="padding-top:20px">
-<div id="isotopeContainer" class="content" style="padding-top:100px">
+<div class="container" style="padding-top:100px">
+<div class="alert alert-info">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Hint</strong> Try clicking the album titles to view just that album!
+</div>
+<div id="isotopeContainer" class="content">
 
 <div id="mainBox" class="box cat cat0 cat1 cat2 cat3" onclick='categorize("*")'>
 	<a class="thumbnail imagebox" style="cursor: pointer"><img src="/images/tile_thumb.jpg">
