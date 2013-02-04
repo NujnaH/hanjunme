@@ -248,6 +248,10 @@ body {
 	padding-right: 2%;
 }
 
+.mobile-header {
+	display: none;
+}
+
 /* RESPONSIVE CSS */
 @media (min-width: 1200px) {
 /* Isotope Styles */
@@ -363,8 +367,8 @@ body {
 }
 
 .box .textbox {
-	padding-left: 5%;
-	padding-right: 5%;
+	padding-left: 2%;
+	padding-right: 2%;
 }
 
 .box .thumbnail img {
@@ -393,6 +397,10 @@ body {
 	margin-left: 10px;
 	margin-bottom: 5px;
 	text-shadow:none;
+}
+
+.mobile-header {
+	display: inline;
 }
 
 }
