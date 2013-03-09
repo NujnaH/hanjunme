@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Hanjun Kim
----				
+---
 
 <div id="myCarousel" class="carousel slide" data-interval="7500">
         <div class="carousel-inner">
@@ -41,6 +41,15 @@ title: Hanjun Kim
                                 </div>
                         </div></a>
                 </div>
+                <div class="item">
+                        <a href="/photography"><img src="/images/photography.jpg">
+                        <div class="container">
+                                <div class="carousel-caption">
+                                        <h1>Photography</h1>
+                                        <p class="lead">Tinkering with a camera.</p>
+                                </div>
+                        </div></a>
+                </div>
         </div>
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
@@ -68,7 +77,7 @@ title: Hanjun Kim
 
 <!-- Articles -->
 {% for post in site.posts %}
-    <div class="box {{ post.categories }} article"> 
+    <div class="box {{ post.categories }} article">
         <a class="thumbnail textbox" href="{{ post.url }}"><h2>{{ post.title }}</h2>
 	<p>Posted {{ post.date | date:"%B %d, %Y"}}</p>
 	<p>{{ post.excerpt }}</p></a>
@@ -143,10 +152,10 @@ $('#mainBox').resize(function(e) {
 		    $("#myCarousel").swipeleft(function() {
 		    	$("#myCarousel").carousel('next');
 		    });
-		    
+
 		    $('#myCarousel').carousel({
       			 interval: 7500,
 		         cycle: true
-		    });	
+		    });
     });
 </script>
