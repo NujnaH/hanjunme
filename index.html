@@ -70,22 +70,23 @@ title: Hanjun Kim
 <script type="text/javascript" src="/js/jquery.ba-resize.min.js"></script>
 
 <div class="container">
-<div class="page-header mobile-header">
-  <h1>Blog <small>All Posts</small></h1><hr>
-</div>
-<div id="isotopeContainer" class="content">
+  <div class="page-header mobile-header">
+    <h1>Blog <small>All Posts</small></h1><hr>
+  </div>
+  <div id="isotopeContainer" class="content">
 
-<!-- Articles -->
-{% for post in site.posts %}
-    <div class="box {{ post.categories }} article">
-        <a class="thumbnail textbox" href="{{ post.url }}"><h2>{{ post.title }}</h2>
-	<p>Posted {{ post.date | date:"%B %d, %Y"}}</p>
-	<p>{{ post.excerpt }}</p></a>
-    </div>
-{% endfor %}
+  <!-- Articles -->
+  {% for post in site.posts %}
+      <div class="box {{ post.categories }} article">
+          <a class="thumbnail textbox" href="{{ post.url }}"><h2>{{ post.title }}</h2>
+  	<p>Posted {{ post.date | date:"%B %d, %Y"}}</p>
+  	<p>{{ post.excerpt }}</p></a>
+      </div>
+  {% endfor %}
 
+  </div>
 </div>
-</div>
+
 
 <script>
 var $container = $('#isotopeContainer');
