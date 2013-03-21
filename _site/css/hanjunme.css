@@ -43,6 +43,14 @@ body {
     -moz-box-shadow: 0px 0px 10px 5px #ccc;
     -webkit-box-shadow: 0px 0px 10px 5px #ccc;
     box-shadow: 0px 0px 10px 5px #ccc;
+    width: 940px;
+    margin: 0 auto;
+}
+
+.bordered-side {
+    -moz-box-shadow: 0px 0px 10px 0px #ccc;
+    -webkit-box-shadow: 0px 0px 10px 0px #ccc;
+    box-shadow: 0px 0px 10px 0px #ccc;
 }
 
 /* CUSTOMIZE THE NAVBAR */
@@ -58,7 +66,13 @@ body {
 	margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
 }
 
-.navbar-wrapper .navbar {
+/* Downsize the brand/project name a bit */
+.navbar .brand {
+	padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+	font-size: 16px;
+	font-weight: bold;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+	margin-left: 20px;
 }
 
 /* Remove border and change up box shadow for more contrast */
@@ -68,14 +82,7 @@ body {
 	-moz-box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
 	box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
 	margin: 0 auto;
-}
-
-/* Downsize the brand/project name a bit */
-.navbar .brand {
-	padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-	font-size: 16px;
-	font-weight: bold;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+	width: 940px;
 }
 
 /* Navbar links: increase padding for taller navbar */
@@ -85,47 +92,54 @@ body {
 /* Offset the responsive button for proper vertical alignment */
 .navbar .btn-navbar {
 	margin-top: 10px;
+	margin-right: 20px;
 }
 
-/* Carousel base class */
-.carousel {
-	margin-bottom: 60px;
-}
 .carousel a:hover {
 	text-decoration:none;
 }
+
+.carousel img {
+	position: absolute;
+	height: 330px;
+	max-width: none;
+	width: auto;
+}
+
 .carousel .container {
 	position: relative;
 	z-index: 9;
+	margin-left: 60px;
+	margin-right: 60px;
+	width: auto;
 }
-.carousel-control {
-	height: 80px;
+.carousel .carousel-control {
 	margin-top: 0;
-	font-size: 120px;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
-	background-color: transparent;
-	border: 0;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-.carousel .item {
-	height: 250px;
+
+.carousel .carousel-inner .item {
+	height: 300px;
+	overflow: hidden;
 }
-.carousel img {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
+
 .carousel-caption {
 	background-color: transparent;
 	position: static;
 	max-width: 550px;
 	padding: 0 20px;
-	margin-top: 150px;
+	margin-top: 200px;
 }
 .carousel-caption h1,  .carousel-caption .lead {
 	margin: 0;
 	line-height: 1.25;
 	color: #fff;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+}
+
+.carousel-caption p {
+	padding-left: 0;
+	padding-right: 0;
 }
 .carousel-caption .btn {
 	margin-top: 10px;
@@ -252,7 +266,7 @@ body {
 	height: auto;
 }
 
-.box .textbox h2, h3, p {
+.box .textbox h2, .box .textbox h3, .box .textbox p {
 	padding-left: 2%;
 	padding-right: 2%;
 }
@@ -263,46 +277,59 @@ body {
 
 /* RESPONSIVE CSS */
 @media (min-width: 1200px) {
-/* Isotope Styles */
+.bordered {
+	width: 1160px;
+}
+
 .box {
 	width: 278.2px;
 	margin-left: 5.43px;
 	margin-right: 5.43px;
 	margin-bottom: 11.7px;
 }
+
+.navbar .navbar-inner {
+	width: 1160px;
+}
 }
 
 /* RESPONSIVE CSS */
 @media (max-width: 979px) {
-.container.navbar-wrapper {
- margin-bottom: 0;
- width: auto;
+
+.bordered {
+	width: 720px;
+	margin: 0px auto;
+}
+
+.navbar .navbar-inner {
+	width: 720px;
+	margin: 0;
+	padding: 5px 0px;
 }
 
 .navbar-wrapper {
 	margin-top: 0px;
 }
 
-.navbar-inner {
- border-radius: 0;
- margin: -20px 0;
+.navbar-wrapper .container {
+	margin-bottom: 0;
+	width: 720;
+	margin: 0px auto 0px;
 }
+
 .carousel .item {
  height: 300px;
 }
-.carousel img {
- width: auto;
- height: 300px;
-}
+
 .featurette {
  height: auto;
  padding: 0;
 }
 .featurette-image.pull-left,  .featurette-image.pull-right {
- display: block;
- float: none;
- max-width: 40%;
- margin: 0 auto 20px;
+	display: block;
+	float: none;
+	max-width: 40%;
+	margin: 0 auto 20px;
 }
 /* Isotope Styles */
 .box {
@@ -328,14 +355,26 @@ body {
 	padding-left: 1%;
 }
 
+.bordered {
+	width: 100%;
+	margin: 0px;
+	-moz-box-shadow: 0px 0px 0px 0px #ccc;
+    -webkit-box-shadow: 0px 0px 0px 0px #ccc;
+    box-shadow: 0px 0px 0px 0px #ccc;
+}
+
+.navbar-wrapper .container {
+	width: auto;
+}
+
 .navbar-fixed-top {
 	margin-left: 0px;
 	margin-right: 0px;
 }
 
-.navbar-inner {
- margin-top: -20px;
+.navbar .navbar-inner {
  margin-bottom: -20px;
+ width: 100%;
 }
 
 .navbar .brand {
@@ -350,15 +389,7 @@ body {
  visibility: collapse;
  height: 0px;
 }
- .carousel .container {
-}
- .carousel .item {
- height: 300px;
-}
-.carousel img {
- height: 300px;
-}
- .carousel-caption {
+.carousel-caption {
  width: 65%;
  padding: 0 70px;
  margin-top: 200px;

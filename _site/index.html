@@ -81,7 +81,7 @@
 </div>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="bordered span10 offset1">
+		<div class="bordered">
 			<div id="myCarousel" class="carousel slide" data-interval="7500">
         <div class="carousel-inner">
                 <div class="item active">
@@ -216,76 +216,76 @@
 
 
 <script>
-var $container = $('#isotopeContainer');
-$(document).ready(function(){
+  var $container = $('#isotopeContainer');
+  $(document).ready(function(){
+      $container.isotope({
+          filter: '*',
+          animationOptions: {
+              duration: 750,
+              easing: 'linear',
+              queue: false,
+          }
+      });
+      $(".fancybox").fancybox({
+  	maxWidth	: 800,
+  	maxHeight	: 600,
+  	fitToView	: false,
+  	width		: '70%',
+  	height		: '70%',
+  	autoSize	: false,
+  	closeClick	: false,
+  	openEffect	: 'none',
+  	closeEffect	: 'none'
+      });
+  });
+
+  $container.imagesLoaded(function(){
+    var selector = '*';
     $container.isotope({
-        filter: '*',
-        animationOptions: {
-            duration: 750,
-            easing: 'linear',
-            queue: false,
-        }
-    });
-    $(".fancybox").fancybox({
-	maxWidth	: 800,
-	maxHeight	: 600,
-	fitToView	: false,
-	width		: '70%',
-	height		: '70%',
-	autoSize	: false,
-	closeClick	: false,
-	openEffect	: 'none',
-	closeEffect	: 'none'
-    });
-});
+      filter: selector,
+      animationOptions: {
+       duration: 750,
+       easing: 'linear',
+       queue: false,
 
-$container.imagesLoaded(function(){
-  var selector = '*';
-  $container.isotope({
-    filter: selector,
-    animationOptions: {
-     duration: 750,
-     easing: 'linear',
-     queue: false,
-
-    }
+      }
+    });
   });
-});
 
-function categorize(selector1){
-  var selector = "." + selector1 + ", .category";
-  if (selector1 == "*") {
-     selector = selector1;
+  function categorize(selector1){
+    var selector = "." + selector1 + ", .category";
+    if (selector1 == "*") {
+       selector = selector1;
+    }
+    $container.isotope({
+      filter: selector,
+      animationOptions: {
+       duration: 750,
+       easing: 'linear',
+       queue: false,
+
+      }
+    });
+    return false;
   }
-  $container.isotope({
-    filter: selector,
-    animationOptions: {
-     duration: 750,
-     easing: 'linear',
-     queue: false,
 
-    }
+  $('#mainBox').resize(function(e) {
+          $container.isotope('reLayout', null);
   });
-  return false;
-}
 
-$('#mainBox').resize(function(e) {
-        $container.isotope('reLayout', null);
-});
+  $(document).ready(function(){
+	    $("#myCarousel").swiperight(function() {
+	    	$("#myCarousel").carousel('prev');
+	    });
+	    $("#myCarousel").swipeleft(function() {
+	    	$("#myCarousel").carousel('next');
+	    });
 
-    $(document).ready(function(){
-		    $("#myCarousel").swiperight(function() {
-		    	$("#myCarousel").carousel('prev');
-		    });
-		    $("#myCarousel").swipeleft(function() {
-		    	$("#myCarousel").carousel('next');
-		    });
-
-		    $('#myCarousel').carousel({
-      			 interval: 7500,
-		         cycle: true
-		    });
-    });
+	    $('#myCarousel').carousel({
+    			 interval: 7500,
+	         cycle: true
+	    });
+  });
 </script>
 
 			<div class="row-fluid container-narrow">
