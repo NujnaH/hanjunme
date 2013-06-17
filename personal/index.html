@@ -1,0 +1,33 @@
+---
+layout: default
+title: Personal
+---
+
+<div id="myCarousel" class="carousel slide">
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="/images/photography.jpg">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Personal</h1>
+					<p class="lead">Reflections and thoughts on self</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-narrow" style="margin-top: 70px">
+<div class="page-header mobile-header">
+  <h1>Blog <small>Personal</small></h1><hr>
+</div>
+	<div class="row-fluid">
+		<div class="span12">
+			{% for post in site.categories.personal limit: 5 %}
+				<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+				<p>Posted {{ post.date | date: "%B %d, %Y" }}</p>
+				<p>{{ post.excerpt }}<br><a href="{{ post.url }}">Read More</a></h2>
+				<hr>
+			{% endfor %}
+		</div>
+	</div>
+</div>
