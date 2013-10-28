@@ -275,6 +275,19 @@ body {
 	display: none;
 }
 
+.code .codeComment {
+    font-style: italic;
+    color: #666;
+}
+
+.code .link {
+    color: #f00;
+}
+
+.code .number {
+    color: #099;
+}
+
 /* RESPONSIVE CSS */
 @media (min-width: 1200px) {
 .bordered {
@@ -456,5 +469,4 @@ body {
 .mobile-header {
 	display: inline;
 }
-
 }
