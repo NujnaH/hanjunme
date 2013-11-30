@@ -1,0 +1,83 @@
+---
+layout: post
+title: Using XSD files with Python
+category: software
+
+excerpt: Recently I've had the opportunity to build a website with a Python backend that made requests and received responses using XML files, where the formats were defined in XSD files. XSD stands for XML Schema Defintion and it's quite self explanatory wha...
+---
+
+Recently I've had the opportunity to build a website with a Python backend that made requests and received responses using XML files, where the formats were defined in XSD files. XSD stands for XML Schema Defintion and it's quite self explanatory what it does. There doesn't seem to be a lot of documentation on how to use it, especially with Python so I thought I'd write about how to do so.<br><br>
+After many trial and errors with different methods of parsing and generating XML files, I decided to use PyXB. It is a great tool which goes through a XSD file and maps XML nodes to Python objects, which is very handy. The version of PyXB I have downloaded is 1.2.3, the latest stable version. First steps are to install PyXB, and create a Python mapping file from the XSD files of interest. The command follows the format below:<br></p>
+<div class="code"><pre>pyxbgen -u static/xsd/example.xsd -m Example</pre></div>
+<p>The first parameter defines the physical location of the XSD file in the filesystem, and the second parameter is the namespace to be used in imports and such. One thing to note is that for different XSD files which are dependent on the same XSD file (i.e. ExampleA and ExampleB both depend on base.xsd), the generator tries to general a _base.py and will result in a generation failure. Hence, I recommend generating Python objects in separate directory if that is the case.</p>
+<p>Now that the Python mapping class is generated, it's time to import the class and start developing! Assume that the example.xsd looks like this:</p>
+<div class="code"><pre>
+    <span class="codeComment">&#60;?xml version="1.0"?&#62;</span>
+    &#60;xsd:schema targetNamespace="example"
+        elementFormDefault="unqualified"&#62;
+        &#60;xsd:import namespace="datatypes"
+            schemaLocation="datatypes.xsd" &#47;&#62;
+
+        &#60;xsd:element name="Request"&#62;
+            &#60;xsd:complexType&#62;
+                &#60;xsd:sequence&#62;
+                    &#60;xsd:choice minOccurs="1" maxOccurs="1"&#62;
+                        &#60;xsd:element name="GetQuote"&#62;
+                            &#60;xsd:annotation&#62;
+                                &#60;xsd:documentation&#62;We're going to get a quote
+                                &#60;&#47;xsd:documentation&#62;
+                            &#60;&#47;xsd:annotation&#62;
+                            &#60;xsd:complexType&#62;
+                                &#60;xsd:sequence&#62;
+                                    &#60;xsd:element name="Price" type="datatype:Price" &#47;&#62;
+                                    &#60;xsd:element name="From" type="datatype:From" minOccurs="1"  &#47;&#62;
+                                    &#60;xsd:element name="Comment" minOccurs="0" type="datatype:Comment" &#47;&#62;
+                                &#60;&#47;xsd:sequence&#62;
+                            &#60;&#47;xsd:complexType&#62;
+                        &#60;&#47;xsd:element&#62;
+                        &#60;xsd:element name="GetOtherQuote"&#62;
+                            &#60;xsd:annotation&#62;
+                                &#60;xsd:documentation&#62;We're going to get an alternate quote
+                                &#60;&#47;xsd:documentation&#62;
+                            &#60;&#47;xsd:annotation&#62;
+                            &#60;xsd:complexType&#62;
+                                &#60;xsd:sequence&#62;
+                                    &#60;xsd:element name="Price" type="datatype:Price" &#47;&#62;
+                                    &#60;xsd:element name="From" type="datatype:From" minOccurs="1"  &#47;&#62;
+                                    &#60;xsd:element name="Comment" minOccurs="0" type="datatype:Comment" &#47;&#62;
+                                &#60;&#47;xsd:sequence&#62;
+                            &#60;&#47;xsd:complexType&#62;
+                        &#60;&#47;xsd:element&#62;
+                    &#60;&#47;xsd:choice&#62;
+                &#60;&#47;xsd:sequence&#62;
+            &#60;&#47;xsd:complexType&#62;
+        &#60;&#47;xsd:element&#62;
+    &#60;&#47;xsd:schema&#62;
+</pre></div>
+<p>The above XSD is created from a number of complexType nodes. Each complexType node must be inflated before it can be assigned values, like so:</p>
+<div class="code"><pre>
+    request = Example.Request() <span class="codeComment">// Inflating the entire object</span>
+    request.GetQuote = pyxb.BIND() <span class="codeComment">// Inflating the complex type</span>
+    request.GetQuote.Price = pyxb.BIND()
+</pre></div>
+<p>The complexType nodes all eventually break down to basic fields which can be set with a simple variable assignemnt</p>
+<div class="code"><pre>
+    request.GetQuote.From.CountryCode = '<span class="link">CAD</span>'
+    request.GetQuote.From.PostalCode = '<span class="link">L4C 0M7'</span>'
+    request.GetQuote.From.LeavingDate = '<span class="link">2013-11-30-12:00</span>'
+</pre></div>
+<p>After populating all of the required fields, then the Python object can be generated into a XML format via the command:</p>
+<div class="code"><pre>
+    xml = request.toxml('<span class="link">utf-8</span>')
+</pre></div>
+<p>The xml can then be written into a file, sent out as a part of a POST request, or whatever else you desire. Say a third party sends you a XML file which also follows <i>example.xsd</i>'s format. How would you go about reading the data? This is done by <i>domutils</i> which is part of pyxb. You must first read in the XML as a string and then the mapping can be done with one line.</p>
+<div class="code"><pre>
+    import pyxb.utils.domutils as domutils
+    <span class="codeComment">// Your receiving code goes here</span>
+    ...
+    xml = domutils.StringToDOM(responseString)
+    mappedReq = Example.CreateFromDOM(xml.documentElement)
+</pre></div>
+<p>Afterwards, the nodes can be referenced as shown above and the values can be read. Any node which states <i>maxOccurs=1</i> can be referenced directly as an object whereas others will have to be iterated as a list.</p>
+
+<script type="text/javascript">var lf_config = [{"collectionMeta":"eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJ0aXRsZSI6IlVzaW5nIFhTRCBmaWxlcyB3aXRoIFB5dGhvbiIsInVybCI6Imh0dHA6XC9cL2hhbmp1bi5tZVwvc29mdHdhcmVcLzIwMTNcLzExXC8zMFwvcHl0aG9uX2FuZF94c2QuaHRtbCIsInRhZ3MiOiJzb2Z0d2FyZSIsImNoZWNrc3VtIjoiM2ZjMTA0YTMzMzk0NWJlMTEwZjNiMTU4OWEzYmY5ZTgiLCJhcnRpY2xlSWQiOiJVc2luZyBYU0QgZmlsZXMgd2l0aCBQeXRob24ifQ.2SlfK_wxKGhPL-64dWIDwdk8Q7iqTxiWBNIBzJvpU54","checksum":"3fc104a333945be110f3b1589a3bf9e8","siteId":"321245","articleId":"Using XSD files with Python","el":"livefyre-comments"}];var conv = fyre.conv.load({}, lf_config);</script>
