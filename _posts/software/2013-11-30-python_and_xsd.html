@@ -10,6 +10,10 @@ Recently I've had the opportunity to build a website with a Python backend that 
 After many trial and errors with different methods of parsing and generating XML files, I decided to use PyXB. It is a great tool which goes through a XSD file and maps XML nodes to Python objects, which is very handy. The version of PyXB I have downloaded is 1.2.3, the latest stable version. First steps are to install PyXB, and create a Python mapping file from the XSD files of interest. The command follows the format below:<br></p>
 <div class="code"><pre>pyxbgen -u static/xsd/example.xsd -m Example</pre></div>
 <p>The first parameter defines the physical location of the XSD file in the filesystem, and the second parameter is the namespace to be used in imports and such. One thing to note is that for different XSD files which are dependent on the same XSD file (i.e. ExampleA and ExampleB both depend on base.xsd), the generator tries to general a _base.py and will result in a generation failure. Hence, I recommend generating Python objects in separate directory if that is the case.</p>
+<i><p>EDIT: After having a chance to work with XSD files more, I have found that generating files into separate directories can still result in errors when trying to import multiple objects into the same python file. A better method is to first generate a mapping object for base.xsd via the command</p>
+<div class="code><pre>pyxbgen -u static/xsd/base.xsd -m base --archive-to-file base.wxs</pre></div>
+<p>The .wxs extension is used to specify shared datatypes. After generating base.xsd, example.xsd can be generated with the command below, where the archive-path option tells the script to search the current directory for shared objects.</p>
+<div class="code"><pre>pyxbgen -u static/xsd/example.xsd -m Example --archive-path .:+</pre></div></i>
 <p>Now that the Python mapping class is generated, it's time to import the class and start developing! Assume that the example.xsd looks like this:</p>
 <div class="code"><pre>
     <span class="codeComment">&#60;?xml version="1.0"?&#62;</span>
