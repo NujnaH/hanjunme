@@ -1,12 +1,12 @@
 <html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>{{ page.title }}</title>
-		<link href="/css/bootstrap.css" rel="stylesheet" media="screen">
-		<link href="/css/bootstrap-responsive.css" rel="stylesheet">
-		<link href="/css/bootstrap-modal.css" rel="stylesheet">
-		<script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
-		<link href="/css/hanjunme.css" rel="stylesheet">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>{{ page.title }}</title>
+        <link href="/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="/css/bootstrap-modal.css" rel="stylesheet">
+        <script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+        <link href="/css/hanjunme.css" rel="stylesheet">
         <script type="text/javascript">
 
           var _gaq = _gaq || [];
@@ -15,19 +15,19 @@
 
           (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
 
         </script>
-	</head>
-	<body>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/bootstrap-modalmanager.js"></script>
-		<script src="/js/bootstrap-modal.js"></script>
-		<script src="/js/jquery.mobile.custom.min.js"></script>
+    </head>
+    <body>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-modalmanager.js"></script>
+        <script src="/js/bootstrap-modal.js"></script>
+        <script src="/js/jquery.mobile.custom.min.js"></script>
 
-		{{ content }}
-	</body>
+        {{ content }}
+    </body>
 </html>
