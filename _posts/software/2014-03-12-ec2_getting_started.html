@@ -1,0 +1,95 @@
+---
+layout: post
+title: Amazon EC2 Getting Started
+category: software
+
+excerpt: Recently I've had the opportunity to build a website with a Python backend that made requests and received responses using XML files, where the formats were defined in XSD files. XSD stands for XML Schema Defintion and it's quite self explanatory wha...
+---
+
+Lately I've been starting to work on a new project and it has involved setting up a web server that will communicate with mobile devices using REST framework. This was my first time actually setting up a server and I've had a bit of trouble with it so I'm creating a tutorial on how to get a basic setup started. I'm using Amazon's EC2, specifically the Amazon Linux AMI (64-bit), and I am setting up a server using Django with a Postgres database and Apache to actually serve the pages.
+
+First thing to note is that there Amazon's distribution of Linux uses <i>yum</i> rather than <i>apt-get</i>. This results in some discrepencies in the package names and what are available. Amazon provides a good tutorial on how to set up access to and ssh into the server so I won't delve into that. Once ssh'ed in, run the following commands to install necessary packages</p>
+<div class="code"><pre>
+sudo yum update
+sudo yum install python27 python27-devel
+sudo yum install python-pip         <span class="codeComment">Required to get python packages</span>
+sudo yum install httpd              <span class="codeComment">Apache installation</span>
+sudo yum install mod_wsgi           <span class="codeComment">WSGI adapter for Apache</span>
+sudo yum install postgresql9 postgresql9-contrib postgresql9-server
+sudo yum install python-psycopg2    <span class="codeComment">Python to Postgres bridge</span>
+</pre></div>
+<p>Next, we need to set up our Apache so that it can serve static files such as Javascript and CSS files from the right directory. To do that, we're going to edit a configuration file, which we can get to with the command</p>
+<div class="code"><pre>
+sudo vim /etc/httpd/conf/httpd.conf
+</pre></div>
+<p>Go to the end of the file and there are lines to comment out. Find the line which says <i>NameVirtualHost: *.80</i> and un-comment that line. In addition, we must define give information regarding our Django app to Apache. To do so, add this block to the end of the file:</p>
+<div class="code"><pre>
+&lt;VirtualHost *:80&gt;
+    DocumentRoot /home/ec2-user/path/to/your/django/source
+    ServerName mywebsite.com
+    ErrorLog /home/ec2-user/logs/mywebsite.com-error_log
+    CustomLog /home/ec2-user/logs/mywebsite.com-access_log common
+    WSGIScriptAlias / /home/ec2-user/path/to/your/django/source/apache/django.wsgi
+    
+    <Directory /home/ec2-user/path/to/public/static>
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride None
+    Allow from all
+    </Directory>
+
+    LogLevel warn
+
+    Alias /static/ /home/ec2-user/path/to/web/public/static/
+&lt;/VirtualHost&gt;
+</pre></div>
+<p>Save this file and your Apache is ready to go! Next is to set up the database for your app. Type in the following command to log in as postgres' super user</p>
+<div class="code"><pre>
+su - postgres
+</pre></div>
+<p>Next, we're going to create a user that is not a super user, whose credentials you can pass to the Django app to access the user. To do so, we're going to enter the following commands:</p>
+<div class="code"><pre>
+psql createdb mydbname
+psql
+CREATEUSER username WITH PASSWORD 'password';
+GRANT ALL PRIVILEGES ON mydbname TO username;
+\q
+exit
+</pre></div>
+<p>There should now be a user created that can access the database. By default, Amazon's Linux image has a very specific security setting and denies most access to databases. So we're going to edit configuration files to lower the security and make it usable.</p>
+<div class="code"><pre>
+sudo vim /var/lib/pgsql9/data/pg_hba.conf
+</pre></div>
+<p>At the end of the file, there are some lines that stat with <i># 'local' is only for Unix domain socket connections only</i>. Comment out that block of code and append it with the following</p>
+<div class="code"><pre>
+# 'local' is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 trust
+host    all             all             ::2/128                 trust
+
+local   all             username                                md5
+</pre></div>
+<p>After doing so, the database should now be accessible from shell as well as with the Django app. Upload your Django code onto the server in your favourite manner. After loading the code, make sure to create /path/to/your/django/source/apache/django.wsgi and paste the following code into the file.</p>
+<div class="code"><pre>
+import os
+import sys
+
+path = '/home/ubuntu/my-django-app'
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+</pre></div>
+<p>Now your server should be ready to go! Restart postgres and apache to read the configuration settings again with the following.</p>
+<div class="code"><pre>
+sudo service postgresql restart
+sudo service httpd restart
+</pre></div>
+<p>And voila! When you hit the url in the browser, your code should be ready to go!</p>
+
+<script type="text/javascript">var lf_config = [{"collectionMeta":"eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJ0aXRsZSI6IkFtYXpvbiBFQzIgR2V0dGluZyBTdGFydGVkIiwidXJsIjoiaHR0cDpcL1wvaGFuanVuLm1lXC9zb2Z0d2FyZVwvMjAxNFwvMDNcLzEyXC9lYzJfZ2V0dGluZ19zdGFydGVkLmh0bWwiLCJ0YWdzIjoic29mdHdhcmUiLCJjaGVja3N1bSI6IjU0OGU5ZmE4NThhMjRkMGQ1MGEyOTJmZDdlYTE2NmExIiwiYXJ0aWNsZUlkIjoiQW1hem9uIEVDMiBHZXR0aW5nIFN0YXJ0ZWQifQ.D1x4PDwvrlCtioJNtv29ADK4Gp3IoLwr7R0d6OTpKcw","checksum":"548e9fa858a24d0d50a292fd7ea166a1","siteId":"321245","articleId":"Amazon EC2 Getting Started","el":"livefyre-comments"}];var conv = fyre.conv.load({}, lf_config);</script>
