@@ -401,6 +401,7 @@ body {
 .carousel {
  visibility: collapse;
  height: 0px;
+ margin-bottom: 75px;
 }
 .carousel-caption {
  width: 65%;
