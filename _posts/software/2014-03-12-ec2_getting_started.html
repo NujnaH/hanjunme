@@ -8,7 +8,7 @@ excerpt: Recently I've had the opportunity to build a website with a Python back
 
 Lately I've been starting to work on a new project and it has involved setting up a web server that will communicate with mobile devices using REST framework. This was my first time actually setting up a server and I've had a bit of trouble with it so I'm creating a tutorial on how to get a basic setup started. I'm using Amazon's EC2, specifically the Amazon Linux AMI (64-bit), and I am setting up a server using Django with a Postgres database and Apache to actually serve the pages.
 
-First thing to note is that there Amazon's distribution of Linux uses <i>yum</i> rather than <i>apt-get</i>. This results in some discrepencies in the package names and what are available. Amazon provides a good tutorial on how to set up access to and ssh into the server so I won't delve into that. Once ssh'ed in, run the following commands to install necessary packages</p>
+First thing to note is that Amazon's distribution of Linux uses <i>yum</i> rather than <i>apt-get</i>. This results in some discrepencies in the package names and what is available. Amazon provides a good tutorial on how to set up access to and ssh into the server so I won't delve into that. Once ssh'ed in, run the following commands to install necessary packages</p>
 <div class="code"><pre>
 sudo yum update
 sudo yum install python27 python27-devel
@@ -22,7 +22,7 @@ sudo yum install python-psycopg2    <span class="codeComment">Python to Postgres
 <div class="code"><pre>
 sudo vim /etc/httpd/conf/httpd.conf
 </pre></div>
-<p>Go to the end of the file and there are lines to comment out. Find the line which says <i>NameVirtualHost: *.80</i> and un-comment that line. In addition, we must define give information regarding our Django app to Apache. To do so, add this block to the end of the file:</p>
+<p>Go to the end of the file and there are lines to comment out. Find the line which says <i>NameVirtualHost: *.80</i> and un-comment that line. In addition, we must define given information regarding our Django app to Apache. To do so, add this block to the end of the file:</p>
 <div class="code"><pre>
 &lt;VirtualHost *:80&gt;
     DocumentRoot /home/ec2-user/path/to/your/django/source
