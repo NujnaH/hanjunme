@@ -48,10 +48,10 @@ su - postgres
 </pre></div>
 <p>Next, we're going to create a user that is not a super user, whose credentials you can pass to the Django app to access the user. To do so, we're going to enter the following commands:</p>
 <div class="code"><pre>
-psql createdb mydbname
+createdb mydbname
 psql
-CREATEUSER username WITH PASSWORD 'password';
-GRANT ALL PRIVILEGES ON mydbname TO username;
+CREATE USER username WITH PASSWORD 'password';
+GRANT ALL PRIVILEGES ON DATABASE mydbname TO username;
 \q
 exit
 </pre></div>
